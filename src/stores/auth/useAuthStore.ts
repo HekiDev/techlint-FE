@@ -2,8 +2,15 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import axios from '@/lib/http/axios'
 
+interface User {
+  id: number
+  name: string
+  email: string
+  role: string
+}
+
 export const useAuthStore = defineStore('authStore', () => {
-  const user = ref(null)
+  const user = ref<User | null>(null)
 
   const handleLogin = async (form: { email: string; password: string }) => {
     return await new Promise((resolve, reject) => {
@@ -41,7 +48,7 @@ export const useAuthStore = defineStore('authStore', () => {
         .get('/user')
         .then((response) => {
           resolve(response.data)
-          user.value = response.data.data
+          user.value = response.data.user
         })
         .catch((errs) => {
           user.value = null

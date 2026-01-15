@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import { useAuthStore } from '@/stores/auth/useAuthStore';
 
 const router = createRouter({
@@ -16,7 +15,31 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: () => import('@/views/HomeView.vue'),
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/create',
+      name: 'create',
+      component: () => import('@/views/CreateIpAddress.vue'),
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      component: () => import('@/views/EditIpAddress.vue'),
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/logs',
+      name: 'logs',
+      component: () => import('@/views/AuditLogView.vue'),
       meta: {
         requiresAuth: true,
       }
