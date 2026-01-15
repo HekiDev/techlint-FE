@@ -9,7 +9,7 @@
 <template>
 	<table class="w-full">
 		<tr>
-			<td colspan="2" class="font-bold">{{ isNew ? 'Updated Values' : 'Old Values' }}</td>
+			<td colspan="2" class="font-bold">{{ isNew ? 'Modified Values' : 'Old Values' }}</td>
 		</tr>
 		<tr>
 			<td>Address</td>
